@@ -15,18 +15,45 @@ $(document).ready(function () {
     $('.overlay').fadeOut();
     $('body').removeClass('ovh');
   });
+
+
+  $('.slider-head').owlCarousel({
+  autoplay: true,
+  rtl: document.dir == 'rtl' ? true : false,
+  loop: true,
+  dots:true,
+  nav: false,
+  items: 1,
+  navText: ["<span class='fa fa-chevron-right'></span>","<span class='fa fa-chevron-left'></span>"]
   
-      ///////// **faq** /////////
-      $('.faq-title').click(function () {
-        $(".faq-title").not(this).removeClass("active");
-        $(this).toggleClass("active");
-        if ($(this).siblings().css('display') == 'none') {
-            $(this).siblings().slideDown(500);
-        } else {
-            $(this).siblings().slideUp(500);
-        }
-        $(".faq-title").not(this).siblings().slideUp(500);
-    })
+});
+  var a = 0;
+$(window).scroll(function () {
+  if ($("div").hasClass("numbers-flex")) {
+    if (
+      a === 0 &&
+      $(this).scrollTop() >= $(".numbers-flex").offset().top - 500
+    ) {
+      $(".number span").each(function () {
+        $(this)
+          .prop("Counter", 0)
+          .animate(
+            {
+              Counter: $(this).text(),
+            },
+            {
+              duration: 1000,
+              easing: "swing",
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              },
+            }
+          );
+      });
+      a = 1;
+    }
+  }
+});
         ///////// landing header /////////
     $('a[data-scroll^="#"]').on('click', function (e) {
         e.preventDefault();
