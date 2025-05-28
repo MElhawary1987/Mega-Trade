@@ -18,11 +18,11 @@ $(document).ready(function () {
 
 
   $('.slider-head').owlCarousel({
-  autoplay: true,
+  autoplay: false,
   rtl: document.dir == 'rtl' ? true : false,
-  loop: true,
-  dots:true,
-  nav: false,
+  loop:false,
+  dots:false,
+  nav: true,
   items: 1,
   navText: ["<span class='fa fa-chevron-right'></span>","<span class='fa fa-chevron-left'></span>"]
   
